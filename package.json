@@ -1,7 +1,7 @@
 {
-  "name": "easy-peasy-bot",
+  "name": "brown-bag-bot",
   "version": "1.0.0",
-  "description": "The awesomest bot evar.",
+  "description": "The Brown Bag Bot",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -9,18 +9,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DEGoodmanWilson/easy-peasy-bot-app.git"
+    "url": "git+https://github.com/TyreeceSimpson/brown-bag-bot.git"
   },
   "keywords": [
     "slack",
     "bot"
   ],
-  "author": "D.E. Goodman-Wilson",
+  "author": "Tyreece Simpson",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/DEGoodmanWilson/easy-peasy-bot-app/issues"
+    "url": "https://github.com/TyreeceSimpson/easy-peasy-bot/issues"
   },
-  "homepage": "https://github.com/DEGoodmanWilson/easy-peasy-bot-app#readme",
+  "homepage": "https://github.com/TyreeceSimpson/easy-peasy-bot#readme",
   "engines": {
     "node": "5.1.1"
   },
