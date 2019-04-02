@@ -32,7 +32,7 @@ exports.post = function (req, res, next) {
      * Print active poll
      */
     function closePoll(data) {
-        slackRes = 'Closing active poll. Here are the final results\n ' + tally.printPoll(data);
+        slackRes = 'Closing active Brown Bag poll. Here are the final results\n ' + tally.printPoll(data);
         console.log('closePoll: ' + slackRes);
         dbActions.disablePoll(pollId, JSON.stringify(data), confirmClosePoll);
     }

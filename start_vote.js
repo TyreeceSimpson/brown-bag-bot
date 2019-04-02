@@ -3,10 +3,8 @@ var poll = ''
     , tally = require('./../tally.js')
     , activePoll = ''
     , redis = require('redis')
-    , pollnameText = ''
     , triggerWord = ''
     , channelId = ''
-    , pollnameText = ''
     , slackRes = ''
     , rtg = ''
     , newPollID = ''
@@ -19,12 +17,10 @@ exports.post = function (req, res, next) {
     /*
      * Start poll data.
      */
-    pollnameText = req.body.text;
     triggerWord = req.body.trigger_word;
     channelId = req.body.channel_id;
-    pollnameText = pollnameText.replace(triggerWord + ' ', '');
     poll = {
-        'pollName': pollnameText,
+        'pollName': 'Next Brown Bag Options',
         'active': 1,
         'answers': []
     };
@@ -36,12 +32,12 @@ exports.post = function (req, res, next) {
      */
     dbActions.getPoll(newPollID, listActivePoll);
     function listActivePoll(data) {
-        console.log('Current Active Poll: ' + data);
+        console.log('Current Brown Bag Poll: ' + data);
         if (data === null) {
-            console.log('There is no current active poll, setting up new poll.');
+            console.log('There is no active Brown Bag poll, setting up new poll.');
         } else {
-            console.log('Current poll is closing.');
-            slackRes = 'Closing Active Poll. Here were the results of the now-closed poll.\n' + tally.printPoll(JSON.parse(data)) + '\n';
+            console.log('Current Brown Bag poll is closing.');
+            slackRes = 'Closing Active Brown Bag Poll. Here were the results of the poll.\n' + tally.printPoll(JSON.parse(data)) + '\n';
         }
     }
 
@@ -49,16 +45,16 @@ exports.post = function (req, res, next) {
      * Set new poll with the active poll id.
      * Print confirmation and vote message.
      */
-    console.log('Setting up new poll with ID: ' + newPollID);
+    console.log('Setting up new Brown Bag poll with ID: ' + newPollID);
     dbActions.setPoll(newPollID, JSON.stringify(poll), printNewPoll);
 
     function printNewPoll() {
-        console.log('New poll is set up with the ID: ' + newPollID);
+        console.log('The new Brown Bag poll is set up with the ID: ' + newPollID);
         dbActions.getPoll(newPollID, confirmNewPoll);
     }
 
     function confirmNewPoll(data) {
-        slackRes += '\nYour poll is set up. Please start voting for ' + tally.printPoll(JSON.parse(data));
+        slackRes += '\nThe brown bag poll is set up. Please start voting for ' + tally.printPoll(JSON.parse(data));
         res.json({ text: slackRes });
     }
 

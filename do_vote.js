@@ -78,7 +78,7 @@ exports.post = function (req, res, next) {
             }
             else {
                 data = {
-                    'pollName': 'There is no active poll set for this channel, please use the "start poll QUESTION" command to start a new poll',
+                    'pollName': 'There is no active Brown Bag poll set for this channel, please use the "start poll QUESTION" command to start a new poll',
                     'answers': []
                 };
                 handleResults();

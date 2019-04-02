@@ -17,11 +17,11 @@ exports.post = function (req, res, next) {
      */
      dbActions.getActivePollId(fetchActivePoll);
      function fetchActivePoll(pollId) {
-       console.log('Fetching active poll: ' + pollId);
+         console.log('Fetching active Brown Bag poll: ' + pollId);
        dbActions.getPoll(pollId, printPoll);
      }
      function printPoll(data) {
-       slackRes = 'Here are the current votes: \n ' + tally.printPoll(JSON.parse(data));
+         slackRes = 'Here are the current Brown Bag votes: \n ' + tally.printPoll(JSON.parse(data));
        console.log('printPoll: ' + slackRes);
        res.json({text: slackRes});
      }
